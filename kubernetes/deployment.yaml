@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-go-application
+  namespace: default
+  labels:
+    app: demo-go-application
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: demo-go-application
+  template:
+    metadata:
+      labels:
+        app: demo-go-application
+    spec:
+      containers:
+        - name: demo-go-application
+          image: technovacdemo.azurecr.io/demo-go-application:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          resources:
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
+            requests:
+              cpu: "200m"
+              memory: "128Mi"
