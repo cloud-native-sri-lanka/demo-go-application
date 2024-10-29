@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: demo-go-application
-          image: technovacdemo.azurecr.io/demo-go-application:latest
+          image: technovacdemo.azurecr.io/demo-go-application:v1
           ports:
             - containerPort: 8080
           readinessProbe:

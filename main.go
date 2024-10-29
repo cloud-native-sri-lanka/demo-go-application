@@ -10,7 +10,7 @@ func main() {
     // Home endpoint
     http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
         w.WriteHeader(http.StatusOK) // 200 OK
-        fmt.Fprintf(w, "Hello, welcome to our demo application!")
+        fmt.Fprintf(w, "Hello, welcome to our demo application v1 !")
     })
 
     // Crash endpoint
